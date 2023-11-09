@@ -1,0 +1,93 @@
+$text-color: #29277d;
+$border: #F968bf;
+$option-hover-bg: #DADEFE;
+$border-radius: 12px;
+$transition: all .3s ease-in-out;
+
+.select {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  height: 45px;
+  line-height: 45px;
+  color: $text-color;
+
+  &__title {
+    position: absolute;
+    left: 1rem;
+    color: rgba(41, 39, 125, 0.40);
+    z-index: -1;
+    transition: $transition;
+
+    &.active {
+      transform: scale(.9) translate(-5%, -50%);
+    }
+  }
+
+  .select__body {
+    height: 100%;
+    border-radius: $border-radius;
+    border: 1px solid $border;
+    padding-left: 1em;
+    cursor: pointer;
+    user-select: none;
+
+    &.open {
+      border: 1px solid $border;
+      border-radius: $border-radius $border-radius 0px 0px;
+
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+
+    &.with-data {
+      border: none;
+      box-shadow: 0px 0px 6px 1px rgba(34, 60, 80, 0.2);
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      top: 30%;
+      right: 1em;
+      width: 16px;
+      height: 16px;
+      background: url("@/assets/icons/arrowSelect.svg");
+
+      transition: $transition;
+    }
+  }
+
+  &__list {
+    background: #FFF;
+    border-radius: 0px 0px 6px 6px;
+    overflow: hidden;
+    border-right: 1px solid $border;
+    border-left: 1px solid $border;
+    border-bottom: 1px solid $border;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;
+
+    transition: $transition;
+
+    &.hide {
+      opacity: 0;
+      height: 0;
+    }
+  }
+
+  &__option {
+    padding-left: 1em;
+    cursor: pointer;
+    user-select: none;
+    transition: $transition;
+
+    &:hover {
+      background-color: $option-hover-bg;
+    }
+  }
+}
